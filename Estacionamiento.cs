@@ -66,7 +66,7 @@ public class Estacionamiento
         }
         catch (FormatException ex)
         {
-            Console.WriteLine($"Error de formato: {ex.Message}. Por favor, ingrese un valor válido.");
+            Console.WriteLine($"Error de formato: {ex.Message}. Ingrese un valor válido.");
         }
         catch (ArgumentException ex)
         {
@@ -115,7 +115,7 @@ public class Estacionamiento
                 }
                 else
                 {
-                    Console.WriteLine("Error en el procesamiento del pago con tarjeta. Intente nuevamente.");
+                    Console.WriteLine("Error en el procesamiento del pago. Intente de nuevo.");
                 }
             }
             else
@@ -125,7 +125,7 @@ public class Estacionamiento
         }
         catch (FormatException ex)
         {
-            Console.WriteLine($"Error de formato: {ex.Message}. Por favor, ingrese un valor válido.");
+            Console.WriteLine($"Error de formato: {ex.Message}. Ingrese un valor válido.");
         }
         catch (Exception ex)
         {
@@ -157,7 +157,7 @@ public class Estacionamiento
         }
         catch (FormatException ex)
         {
-            Console.WriteLine($"Error de formato: {ex.Message}. Por favor, ingrese un valor válido.");
+            Console.WriteLine($"Error de formato: {ex.Message}. Ingrese un valor válido.");
         }
     }
 

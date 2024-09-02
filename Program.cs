@@ -51,7 +51,7 @@ public class Programa
             }
             catch (FormatException ex)
             {
-                Console.WriteLine($"Error de formato: {ex.Message}. Por favor, ingrese un número válido.");
+                Console.WriteLine($"Error de formato: {ex.Message}. Ingrese un número válido.");
             }
             catch (Exception ex)
             {
