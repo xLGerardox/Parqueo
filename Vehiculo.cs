@@ -14,7 +14,7 @@ public abstract class Vehiculo
         Marca = marca;
         Modelo = modelo;
         Color = color;
-        HoraEntrada = DateTime.Now;
+        HoraEntrada = DateTime.Now; // Hora de entrada al momento de crear el vehículo
     }
 
     public abstract double CalcularCostoEstacionamiento(TimeSpan tiempoEstacionado);

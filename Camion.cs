@@ -1,4 +1,6 @@
-﻿public class Camion : Vehiculo
+﻿using System;
+
+public class Camion : Vehiculo
 {
     public double CapacidadCarga { get; set; }
 
@@ -10,6 +12,6 @@
 
     public override double CalcularCostoEstacionamiento(TimeSpan tiempoEstacionado)
     {
-        return Math.Ceiling(tiempoEstacionado.TotalHours) * 15;
+        return Math.Ceiling(tiempoEstacionado.TotalHours) * 20;
     }
 }

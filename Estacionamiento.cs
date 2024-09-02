@@ -23,7 +23,7 @@ public class Estacionamiento
 
         try
         {
-            Console.WriteLine("Ingrese el tipo de vehículo (1- Carro, 2- Moto, 3- Camión): ");
+            Console.WriteLine("Ingrese el tipo de vehículo (1 - Carro, 2 - Moto, 3 - Camión): ");
             int tipoVehiculo = int.Parse(Console.ReadLine());
 
             Console.Write("Ingrese la placa del vehículo: ");
@@ -98,7 +98,7 @@ public class Estacionamiento
             Console.WriteLine($"Tiempo estacionado: {Math.Ceiling(tiempoEstacionado.TotalHours)} horas");
             Console.WriteLine($"Costo total a pagar: Q{costoTotal}");
 
-            Console.WriteLine("Seleccione el método de pago (1- Efectivo, 2- Tarjeta): ");
+            Console.WriteLine("Seleccione el método de pago (1 - Efectivo, 2 - Tarjeta): ");
             int metodoPago = int.Parse(Console.ReadLine());
 
             if (metodoPago == 1)
@@ -150,6 +150,9 @@ public class Estacionamiento
                 double cambio = montoEntregado - costoTotal;
                 Console.WriteLine($"Cambio a devolver: Q{cambio}");
                 MostrarDesgloseCambio(cambio);
+                Console.WriteLine("Vehículo retirado exitosamente.");
+                ListaVehiculos.Remove(ListaVehiculos.Find(v => v.Placa == Console.ReadLine()));
+                EspaciosDisponibles++;
             }
         }
         catch (FormatException ex)
@@ -197,29 +200,27 @@ public class Estacionamiento
                 throw new ArgumentException("Fecha de vencimiento inválida.");
             }
 
-            Console.Write("Ingrese el CVV (3 o 4 dígitos): ");
+            Console.Write("Ingrese el CVV (3 dígitos): ");
             string cvv = Console.ReadLine();
 
-            if (!Regex.IsMatch(cvv, @"^\d{3,4}$"))
+            if (!Regex.IsMatch(cvv, @"^\d{3}$"))
             {
                 throw new ArgumentException("CVV inválido.");
             }
 
-            // Simulación de la aprobación del pago
             Console.WriteLine("Procesando pago...");
             System.Threading.Thread.Sleep(2000);  // Simular tiempo de procesamiento
             Console.WriteLine("Pago aprobado exitosamente.");
-
             return true;
         }
         catch (ArgumentException ex)
         {
-            Console.WriteLine($"Error en la entrada: {ex.Message}");
+            Console.WriteLine($"Error en los datos de la tarjeta: {ex.Message}");
             return false;
         }
-        catch (Exception ex)
+        catch (FormatException ex)
         {
-            Console.WriteLine($"Ocurrió un error inesperado: {ex.Message}");
+            Console.WriteLine($"Error de formato: {ex.Message}");
             return false;
         }
     }
@@ -229,14 +230,13 @@ public class Estacionamiento
         if (ListaVehiculos.Count == 0)
         {
             Console.WriteLine("No hay vehículos estacionados.");
+            return;
         }
-        else
+
+        Console.WriteLine("Vehículos estacionados:");
+        foreach (var vehiculo in ListaVehiculos)
         {
-            Console.WriteLine("Vehículos estacionados:");
-            foreach (var vehiculo in ListaVehiculos)
-            {
-                Console.WriteLine($"Placa: {vehiculo.Placa}, Marca: {vehiculo.Marca}, Modelo: {vehiculo.Modelo}, Color: {vehiculo.Color}, Hora de entrada: {vehiculo.HoraEntrada}");
-            }
+            Console.WriteLine($"Placa: {vehiculo.Placa}, Marca: {vehiculo.Marca}, Modelo: {vehiculo.Modelo}, Color: {vehiculo.Color}, Hora de entrada: {vehiculo.HoraEntrada}");
         }
     }
 

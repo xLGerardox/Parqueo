@@ -1,4 +1,6 @@
-﻿public class Carro : Vehiculo
+﻿using System;
+
+public class Carro : Vehiculo
 {
     public int NumeroDePuertas { get; set; }
 
@@ -10,6 +12,6 @@
 
     public override double CalcularCostoEstacionamiento(TimeSpan tiempoEstacionado)
     {
-        return Math.Ceiling(tiempoEstacionado.TotalHours) * 10;
+        return Math.Ceiling(tiempoEstacionado.TotalHours) * 15;
     }
 }

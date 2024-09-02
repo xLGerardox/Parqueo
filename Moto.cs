@@ -1,4 +1,6 @@
-﻿public class Moto : Vehiculo
+﻿using System;
+
+public class Moto : Vehiculo
 {
     public int Cilindrada { get; set; }
 
@@ -10,6 +12,6 @@
 
     public override double CalcularCostoEstacionamiento(TimeSpan tiempoEstacionado)
     {
-        return Math.Ceiling(tiempoEstacionado.TotalHours) * 5;
+        return Math.Ceiling(tiempoEstacionado.TotalHours) * 10;
     }
 }
